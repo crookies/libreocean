@@ -1,0 +1,6 @@
+config BR2_PACKAGE_GTK_LIBREOCEAN_THEMES
+	bool "gtk-libreocean-themes"
+	depends on BR2_PACKAGE_LIBGTK2
+	help
+	  Add some themes for Libreocean GTK look
+

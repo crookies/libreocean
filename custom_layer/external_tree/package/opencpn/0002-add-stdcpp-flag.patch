@@ -1,0 +1,28 @@
+Index: opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/CMakeLists.txt
+===================================================================
+--- opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c.orig/CMakeLists.txt
++++ opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/CMakeLists.txt
+@@ -425,6 +425,7 @@ IF(USE_BUILDROOT)
+    ENDFOREACH()
+    SET(wxWidgets_INCLUDE_DIRS ${wxWidgets_INC_DIR_MOD})
+    SET(wxWidgets_INCLUDE_DIRS_NO_SYSTEM ON)
++   SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=gnu++11 ")
+ ENDIF(USE_BUILDROOT)
+ 
+ INCLUDE(${wxWidgets_USE_FILE})
+Index: opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/plugins/wmm_pi/src/MagneticPlotMap.cpp
+===================================================================
+--- opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c.orig/plugins/wmm_pi/src/MagneticPlotMap.cpp
++++ opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/plugins/wmm_pi/src/MagneticPlotMap.cpp
+@@ -53,6 +53,11 @@
+ static const long long lNaN = 0xfff8000000000000;
+ #define qNan (*(double*)&lNaN)
+ 
++#if defined(__linux__)
++#define isnan  std::isnan
++#endif
++
++
+ double square(double x) { return x*x; }
+ 
+ /* initialize cache to contain data */

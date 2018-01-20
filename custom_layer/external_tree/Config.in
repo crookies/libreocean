@@ -1,0 +1,5 @@
+source "$BR2_EXTERNAL_LIBREOCEAN_PATH/package/opencpn/Config.in"
+source "$BR2_EXTERNAL_LIBREOCEAN_PATH/package/gtk-theme-arc/Config.in"
+source "$BR2_EXTERNAL_LIBREOCEAN_PATH/package/gtk-libreocean-themes/Config.in"
+source "$BR2_EXTERNAL_LIBREOCEAN_PATH/package/wxwidgets/Config.in"
+

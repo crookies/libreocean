@@ -1,0 +1,19 @@
+config BR2_PACKAGE_OPENCPN
+	bool "opencpn"
+	select BR2_PACKAGE_WXWIDGETS
+	select BR2_PACKAGE_GPSD 
+	select BR2_PACKAGE_GPSD_GARMIN 
+	select BR2_PACKAGE_GPSD_GARMIN_SIMPLE_TXT
+	select BR2_PACKAGE_GPSD_NMEA2000
+	select BR2_PACKAGE_KBD
+	select BR2_PACKAGE_PORTAUDIO
+	select BR2_PACKAGE_PORTAUDIO_CXX
+	select BR2_PACKAGE_TINYXML
+	select BR2_PACKAGE_LIBCURL
+	select BR2_PACKAGE_HOST_CMAKE
+	depends on BR2_PACKAGE_LUA || BR2_PACKAGE_LUAJIT
+	help
+	  Free Open Source Chartplotter and Marine GPS Navigation Software.
+
+
+

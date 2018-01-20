@@ -1,0 +1,42 @@
+Index: opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/CMakeLists.txt
+===================================================================
+--- opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c.orig/CMakeLists.txt
++++ opencpn-c4f53bea005fb320b113bb3aea37ae09b471535c/CMakeLists.txt
+@@ -41,6 +41,11 @@ PROJECT(OpenCPN)
+ 
+ SET(CMAKE_VERBOSE_MAKEFILE ON)
+ 
++#Define USE_BUILDROOT according to presence of environment variable BR2_VERSION
++IF(DEFINED ENV{BR2_VERSION})
++   SET(USE_BUILDROOT ON)
++ENDIF()
++
+ IF(APPLE)
+   SET(PACKAGE_NAME OpenCPN)
+ ELSE(APPLE)
+@@ -318,7 +323,7 @@ OPTION (USE_GL "Enable OpenGL support" O
+ 
+ # Search for opengles, short of running a program to test the speed
+ # of acceleration, I simply use gles on "native linux" arm systems
+-IF (ARCH MATCHES "arm*" AND (NOT QT_ANDROID) )
++IF (ARCH MATCHES "arm*" AND (NOT QT_ANDROID) AND NOT(USE_BUILDROOT))
+   find_path(OPENGLESv1_INCLUDE_DIR GLES/gl.h )
+   IF (OPENGLESv1_INCLUDE_DIR)
+     MESSAGE (STATUS "Found OpenGLESv1")
+@@ -412,6 +417,16 @@ IF(MSYS)
+ STRING( REGEX REPLACE "/usr/local" ";C:/MinGW/msys/1.0/local" wxWidgets_INCLUDE_DIRS ${wxWidgets_INCLUDE_DIRS} )
+ ENDIF(MSYS)
+ 
++IF(USE_BUILDROOT)
++# Fix detected wxWidgets include paths with sysroot (and avoid -isystem but force -I usage)
++   SET(wxWidgets_INC_DIR_MOD "")
++   FOREACH(item ${wxWidgets_INCLUDE_DIRS})
++      SET(wxWidgets_INC_DIR_MOD ${wxWidgets_INC_DIR_MOD} "${CMAKE_SYSROOT}/${item}")
++   ENDFOREACH()
++   SET(wxWidgets_INCLUDE_DIRS ${wxWidgets_INC_DIR_MOD})
++   SET(wxWidgets_INCLUDE_DIRS_NO_SYSTEM ON)
++ENDIF(USE_BUILDROOT)
++
+ INCLUDE(${wxWidgets_USE_FILE})
+ MESSAGE (STATUS "Found wxWidgets..." )
+     MESSAGE (STATUS " wxWidgets Includ: ${wxWidgets_INCLUDE_DIRS}")

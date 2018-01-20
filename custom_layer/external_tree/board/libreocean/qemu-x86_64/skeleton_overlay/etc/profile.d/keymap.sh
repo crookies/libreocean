@@ -1,0 +1,2 @@
+loadkeys be-latin1
+

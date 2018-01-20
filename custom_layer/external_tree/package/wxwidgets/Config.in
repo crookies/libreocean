@@ -1,0 +1,6 @@
+config BR2_PACKAGE_WXWIDGETS
+	bool "wxwidgets"
+	depends on BR2_PACKAGE_LIBGTK2
+	help
+	  WxWidgets is a crossplatform widget library.
+

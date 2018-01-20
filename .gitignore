@@ -1,0 +1,7 @@
+/dl
+/output
+/ccache
+/output/*
+/buildroot
+.libreocean_last_target_root_dir
+

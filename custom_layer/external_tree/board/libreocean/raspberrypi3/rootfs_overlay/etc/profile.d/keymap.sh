@@ -1,0 +1,2 @@
+loadkmap </etc/be.kmap
+

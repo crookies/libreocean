@@ -1,0 +1,6 @@
+config BR2_PACKAGE_GTK_THEME_ARC
+	bool "gtk-theme-arc"
+	depends on BR2_PACKAGE_LIBGTK2
+	help
+	  rc is a flat theme with transparent elements for GTK 3, GTK 2.
+
