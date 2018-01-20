@@ -32,9 +32,10 @@ BR2_EXTERNAL=$LIBREOCEAN_ROOT_DIR/custom_layer/external_tree
 export BR2_EXTERNAL
 export LIBREOCEAN_ROOT_DIR
 
-LOTD=$LIBREOCEAN_ROOT_DIR/.libreocean_last_target_root_dir
-if [ -f $LOTD ] ; then
+LIBREOCEAN_TARGET_ROOT_DIR=$LIBREOCEAN_ROOT_DIR/.libreocean_last_target_root_dir
+if [ -f $LIBREOCEAN_TARGET_ROOT_DIR ] ; then
 	cd $(cat $LOTD)
+	export LIBREOCEAN_TARGET_ROOT_DIR
 else
 	clear
 	echo
