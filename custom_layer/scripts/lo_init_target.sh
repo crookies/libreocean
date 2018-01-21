@@ -1,5 +1,5 @@
 #/bin/bash
-
+set +x
 if [ "$LIBREOCEAN_ROOT_DIR" = "" ]; then
     echo "Libreocean env not configured!!!!!"
     exit
@@ -14,6 +14,8 @@ else
 fi
 
 LIBREOCEAN_TARGET_ROOT_DIR=$LIBREOCEAN_ROOT_DIR/output/$LIBREOCEAN_TARGET
+
+echo
 echo "Target root dir: $LIBREOCEAN_TARGET_ROOT_DIR"
 
 if [ ! -d $LIBREOCEAN_TARGET_ROOT_DIR ] ; then
@@ -22,11 +24,9 @@ if [ ! -d $LIBREOCEAN_TARGET_ROOT_DIR ] ; then
    make O=$PWD -C $LIBREOCEAN_ROOT_DIR/buildroot libreocean_${LIBREOCEAN_TARGET}_defconfig;
 fi
 
-echo -n $LIBREOCEAN_TARGET_ROOT_DIR > $LIBREOCEAN_ROOT_DIR/.libreocean_last_target_root_dir
-export LIBREOCEAN_TARGET_ROOT_DIR
+echo -n ${LIBREOCEAN_TARGET_ROOT_DIR} > ${LIBREOCEAN_ROOT_DIR}/.libreocean_last_target_root_dir
 
-clear
+echo "You should exit this shell and re-define the environment OR resource setenv.sh"
 echo
-echo "You should exit this shell and re-define the environment OR cd \$LIBREOCEAN_TARGET_ROOT_DIR"
-echo "(\$LIBREOCEAN_TARGET_ROOT_DIR = $LIBREOCEAN_TARGET_ROOT_DIR)"
+
 
