@@ -51,3 +51,7 @@ Copy the bootable "sdcard.img" onto an SD card or eMMC with "dd":
 
 Insert the SDcard into your ODROID-C2, and power it up. Your new system
 should come up now.
+
+Flashing in LibreOcean build directory:
+
+sudo dd if=images/sdcard.img of=/dev/mmcblk0 bs=4M conv=fsync

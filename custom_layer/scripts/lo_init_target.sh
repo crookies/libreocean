@@ -5,11 +5,11 @@ if [ "$LIBREOCEAN_ROOT_DIR" = "" ]; then
     exit
 fi
 
-if [[ "$1" =~ ^(qemu-x86_64|raspberrypi3|odroidc2)$ ]]; then
+if [[ "$1" =~ ^(qemu-x86_64|rpi3|odroidc2)$ ]]; then
 	LIBREOCEAN_TARGET=$1
 	shift
 else
-    echo "first parameter must be qemu-x86_64|raspberrypi3|odroidc2"
+    echo "first parameter must be qemu-x86_64|rpi3|odroidc2"
     exit
 fi
 
